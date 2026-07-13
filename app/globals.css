@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -236,4 +237,58 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Custom scrollbar (site-wide, incl. the rewards winner board) — replaces the default OS one. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/*
+ * Page-load intro: hero video panel flies up to viewport center as sole focus,
+ * then settles into place (see components/sections/hero.tsx). Everything else
+ * stays hidden until that timeline finishes, then fades/slides in together.
+ */
+html:not(.intro-ready) .site-nav,
+html:not(.intro-ready) .aurora-banner,
+html:not(.intro-ready) .hero-intro-text,
+html:not(.intro-ready) main > section:nth-child(n + 2),
+html:not(.intro-ready) .hp-sticky-cta,
+html:not(.intro-ready) footer {
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+}
+/* Prevents a flash-of-real-position before JS takes over the fly-in (would
+   otherwise render briefly in its normal grid slot, reading as a duplicate). */
+html:not(.intro-ready) .hero-video-panel {
+  opacity: 0;
+}
+html.intro-ready .site-nav,
+html.intro-ready .aurora-banner,
+html.intro-ready .hero-intro-text,
+html.intro-ready main > section:nth-child(n + 2),
+html.intro-ready .hp-sticky-cta,
+html.intro-ready footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  transition-delay: 0.05s;
 }

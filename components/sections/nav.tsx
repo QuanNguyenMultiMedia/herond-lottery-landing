@@ -10,7 +10,7 @@ const NAV_LINKS = [
 
 export function Nav() {
   return (
-    <nav className="sticky top-0 z-100 flex flex-nowrap items-center justify-between gap-2 border-b border-border bg-background/85 px-4 py-3 backdrop-blur-md sm:px-8">
+    <nav className="site-nav relative z-20 flex flex-nowrap items-center justify-between gap-2 border-b border-border bg-background px-4 py-3 sm:px-8">
       <div className="flex min-w-0 items-center gap-2 sm:gap-2.5">
         <video
           src="/assets/herond-icon-loop.webm"

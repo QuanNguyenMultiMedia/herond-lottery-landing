@@ -25,18 +25,18 @@ export interface FinalData {
 export const SHEET_URL =
   "https://docs.google.com/spreadsheets/d/1qkVNNGnnYhiGNds5tr3fxzyOXGbiCUFD8-2I8-3YKK8/edit?usp=sharing";
 
-/** Local time draws close each Monday. */
-export const DRAW_TIME = "12:30";
+/** Draws close each Sunday at this UTC time. */
+export const DRAW_TIME = "17:00";
 
 export const WEEKS_META: WeekMeta[] = [
-  { week: 1, day: 29, month: "June", year: 2026 },
-  { week: 2, day: 6, month: "July", year: 2026 },
-  { week: 3, day: 13, month: "July", year: 2026 },
-  { week: 4, day: 20, month: "July", year: 2026 },
-  { week: 5, day: 27, month: "July", year: 2026 },
-  { week: 6, day: 3, month: "August", year: 2026 },
-  { week: 7, day: 10, month: "August", year: 2026 },
-  { week: 8, day: 17, month: "August", year: 2026 },
+  { week: 1, day: 28, month: "June", year: 2026 },
+  { week: 2, day: 5, month: "July", year: 2026 },
+  { week: 3, day: 12, month: "July", year: 2026 },
+  { week: 4, day: 19, month: "July", year: 2026 },
+  { week: 5, day: 26, month: "July", year: 2026 },
+  { week: 6, day: 2, month: "August", year: 2026 },
+  { week: 7, day: 9, month: "August", year: 2026 },
+  { week: 8, day: 16, month: "August", year: 2026 },
 ];
 
 /** Seed data shown before the live sheet loads (and if the sheet is unreachable). */
@@ -96,7 +96,7 @@ export const FAQS: { q: string; paras: string[] }[] = [
   {
     q: "When are winners drawn? Do my tickets get used up when I win or enter a draw?",
     paras: [
-      "Every Monday for the Weekly Draw, plus one Grand Draw at the end of Season 1.",
+      "Every Sunday for the Weekly Draw, plus one Grand Draw at the end of Season 1.",
       "Tickets are never consumed. Every one you earn keeps counting toward the Grand Draw all season.",
     ],
   },

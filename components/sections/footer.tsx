@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FooterAurora } from "@/components/footer-aurora";
 
 const LINKS = [
   { href: "https://herond.org", label: "herond.org" },
@@ -9,8 +10,10 @@ const LINKS = [
 
 export function Footer() {
   return (
-    <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-4 py-[26px] text-[13px] text-white/30 sm:px-8">
-      <div className="flex items-center gap-2.5">
+    <footer className="relative flex flex-wrap items-center justify-between gap-3 overflow-hidden border-t border-border px-4 py-[26px] text-[13px] text-white/30 sm:px-8">
+      <FooterAurora className="pointer-events-none absolute inset-0 h-full w-full" />
+      <div className="pointer-events-none absolute inset-0 bg-background/55" />
+      <div className="relative z-10 flex items-center gap-2.5">
         <Image
           src="/assets/herond-logo.svg"
           alt="Herond"
@@ -20,7 +23,7 @@ export function Footer() {
         />
         <span>© 2026 Herond Browser</span>
       </div>
-      <div className="flex gap-4.5">
+      <div className="relative z-10 flex gap-4.5">
         {LINKS.map((link) => (
           <Link
             key={link.href}

@@ -23,7 +23,9 @@ function computeCountdown(weeksMeta: WeekMeta[], drawTime: string, now: number):
 
   let next: { date: Date; meta: WeekMeta } | null = null;
   for (const meta of weeksMeta) {
-    const date = new Date(meta.year, MONTH_INDEX[meta.month], meta.day, drawH, drawM, 0);
+    // drawTime is UTC — Date.UTC + epoch comparison makes the countdown correct
+    // for the viewer regardless of their local timezone.
+    const date = new Date(Date.UTC(meta.year, MONTH_INDEX[meta.month], meta.day, drawH, drawM, 0));
     if (date.getTime() > now) {
       next = { date, meta };
       break;
@@ -44,7 +46,7 @@ function computeCountdown(weeksMeta: WeekMeta[], drawTime: string, now: number):
 
   return {
     active: true,
-    label: `Monday, ${next.meta.day} ${next.meta.month}`,
+    label: `Sunday, ${next.meta.day} ${next.meta.month}`,
     days: pad(days),
     hours: pad(hours),
     mins: pad(mins),
@@ -62,7 +64,7 @@ const INITIAL_STATE: CountdownState = {
 };
 
 /**
- * Live countdown to the next Monday weekly draw, ticking every second.
+ * Live countdown to the next Sunday weekly draw, ticking every second.
  * Starts inactive so server and first client render match exactly, then
  * computes the real value on mount — avoids a hydration mismatch from
  * server/client clock skew.

@@ -81,10 +81,10 @@ export function RewardsWinners() {
   }, [active, byWeek, finalData]);
 
   return (
-    <section id="rewards" className="py-[clamp(40px,6vw,72px)]">
+    <section id="rewards" className="flex min-h-svh flex-col justify-center py-[clamp(40px,6vw,72px)]">
       <div className="mx-auto max-w-[1080px] px-6">
-        <SectionHeading eyebrow="Rewards" title="$10,000 Up For Grabs" />
-        <p className="-mt-6 mb-10 max-w-[520px] text-[15px] text-muted-foreground">
+        <SectionHeading eyebrow="Rewards" title="$10,000 Up for grabs" />
+        <p className="-mt-6 mb-10 max-w-[520px] text-pretty text-[15px] text-muted-foreground">
           Real prizes every week, plus a Grand Draw built from every ticket you&apos;ve earned all
           season.
         </p>
@@ -94,7 +94,7 @@ export function RewardsWinners() {
             badge="WEEKLY POOL"
             badgeColor="#3373f6"
             badgeBg="rgba(51,115,246,0.12)"
-            cadence="Every Monday"
+            cadence="Every Sunday"
             amount="Up to $400"
             winners="30"
             note="Each weekly draw uses only that week's tickets."
@@ -163,7 +163,7 @@ export function RewardsWinners() {
                 {panel.badgeText}
               </span>
             </div>
-            <div className="max-h-[640px] overflow-y-auto px-[22px] pt-1.5 pb-[18px]">
+            <div className="hp-scroll max-h-[640px] overflow-y-auto px-[22px] pt-1.5 pb-[18px]">
               {panel.isDrawn ? (
                 panel.draws.map((draw, i) => (
                   <div key={i} className="border-b border-white/[0.06] py-4 last:border-b-0">
@@ -249,7 +249,7 @@ function PoolCard({
           {winners === "500+" ? "" : "/ week"}
         </div>
       </div>
-      <p className="mb-4 text-[13px] leading-snug text-muted-foreground">{note}</p>
+      <p className="mb-4 text-pretty text-[13px] leading-snug text-muted-foreground">{note}</p>
       <div className="mb-3.5 h-px bg-[var(--hp-hairline)]" />
       <div className="mb-2.5 text-[10.5px] font-semibold uppercase tracking-[.1em] text-white/30">
         Prize breakdown
