@@ -2,9 +2,9 @@ import Link from "next/link";
 import { HEROND_POINT_LINK } from "@/data/season";
 
 const NAV_LINKS = [
+  { href: "#rewards", label: "Rewards" },
   { href: "#how", label: "How it Works" },
   { href: "#rules", label: "Rules" },
-  { href: "#rewards", label: "Rewards" },
   { href: "#faq", label: "FAQ" },
 ];
 
