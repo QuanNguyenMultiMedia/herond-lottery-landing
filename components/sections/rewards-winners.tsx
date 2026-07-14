@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TiltCard } from "@/components/tilt-card";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { PointIcon, LinePointIcon } from "@/components/icons";
+import { GradientText } from "@/components/gradient-text";
 import { fetchWinners } from "@/lib/winners";
 import {
   WEEKS_META,
@@ -92,7 +93,14 @@ export function RewardsWinners() {
   return (
     <section id="rewards" className="py-[clamp(72px,10vw,128px)]">
       <div className="mx-auto w-full min-w-0 max-w-[1080px] px-6">
-        <SectionHeading eyebrow="Rewards" title="$10,000 Up for grabs" />
+        <SectionHeading
+          eyebrow="Rewards"
+          title={
+            <>
+              <GradientText className="rounded-lg bg-background px-1">$10,000</GradientText> Up for grabs
+            </>
+          }
+        />
         <p className="-mt-6 mb-10 max-w-[420px] text-pretty text-[15px] text-muted-foreground">
           Real prizes every week, plus a Grand Draw built from every ticket you&apos;ve earned all
           season.

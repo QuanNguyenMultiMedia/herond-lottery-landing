@@ -179,6 +179,90 @@
   }
 }
 
+/* Brand palette for the GradientText glow (components/gradient-text.tsx) —
+   same four hues as the footer aurora, expressed as HSL for hsl(var(...)). */
+:root {
+  --gradient-1: 221 89% 58%; /* primary blue #3373f6 */
+  --gradient-2: 248 78% 62%; /* purple #6651ea */
+  --gradient-3: 351 100% 75%; /* pink #ff8097 */
+  --gradient-4: 340 76% 56%; /* red #e83669 */
+}
+@keyframes gradient-border {
+  0%,
+  100% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+  25% {
+    border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;
+  }
+  50% {
+    border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;
+  }
+  75% {
+    border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;
+  }
+}
+@keyframes gradient-1 {
+  0%,
+  100% {
+    top: 0;
+    right: 0;
+  }
+  50% {
+    top: 100%;
+    right: 75%;
+  }
+  75% {
+    top: 100%;
+    right: 25%;
+  }
+}
+@keyframes gradient-2 {
+  0%,
+  100% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    top: 100%;
+    left: 75%;
+  }
+  75% {
+    top: 100%;
+    left: 25%;
+  }
+}
+@keyframes gradient-3 {
+  0%,
+  100% {
+    bottom: 0;
+    left: 0;
+  }
+  50% {
+    bottom: 100%;
+    left: 75%;
+  }
+  75% {
+    bottom: 100%;
+    left: 25%;
+  }
+}
+@keyframes gradient-4 {
+  0%,
+  100% {
+    bottom: 0;
+    right: 0;
+  }
+  50% {
+    bottom: 100%;
+    right: 75%;
+  }
+  75% {
+    bottom: 100%;
+    right: 25%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

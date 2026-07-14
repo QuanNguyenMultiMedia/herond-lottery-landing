@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { CtaLink } from "@/components/cta-link";
 import { PointIcon } from "@/components/icons";
+import { GradientText } from "@/components/gradient-text";
 
 export function FinalCta() {
   const rootRef = useRef<HTMLElement>(null);
@@ -65,9 +66,12 @@ export function FinalCta() {
             <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80">
               Season 1 Grand Draw
             </div>
-            <div className="fc-amount mb-1.5 text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_0_30px_rgba(51,115,246,0.35)]">
+            <GradientText
+              as="div"
+              className="fc-amount mb-1.5 rounded-2xl bg-card text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_0_30px_rgba(51,115,246,0.35)]"
+            >
               $10,000
-            </div>
+            </GradientText>
             <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-muted-foreground">
               Total prize pool
             </div>
