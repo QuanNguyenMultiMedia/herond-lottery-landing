@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { HEROND_POINT_LINK } from "@/data/season";
+import { useDownloadLink } from "@/lib/download-link";
 
 const NAV_LINKS = [
   { href: "#rewards", label: "Rewards" },
@@ -9,6 +11,8 @@ const NAV_LINKS = [
 ];
 
 export function Nav() {
+  const href = useDownloadLink();
+
   return (
     <nav className="site-nav sticky top-0 z-30 flex flex-nowrap items-center justify-between gap-2 border-b border-border bg-background/80 px-4 py-3 backdrop-blur-xl sm:px-8">
       <div className="flex min-w-0 items-center gap-2 sm:gap-2.5">
@@ -41,7 +45,7 @@ export function Nav() {
           ))}
         </div>
         <Link
-          href={HEROND_POINT_LINK}
+          href={href}
           target="_blank"
           className="ml-1 whitespace-nowrap rounded-full bg-primary px-3.5 py-2 text-[12px] font-semibold text-white no-underline transition-colors hover:bg-[#4680ff] hover:text-white sm:ml-2 sm:px-5 sm:py-2.5 sm:text-[13px]"
         >
