@@ -5,7 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { CtaLink } from "@/components/cta-link";
 import { PointIcon } from "@/components/icons";
-import { GradientText } from "@/components/gradient-text";
 import { useCountdown } from "@/lib/countdown";
 import { WEEKS_META, DRAW_TIME } from "@/data/season";
 
@@ -125,9 +124,7 @@ export function Hero() {
             <span aria-hidden className="hidden text-white/25 min-[420px]:inline">
               ·
             </span>
-            <span className="whitespace-nowrap font-semibold text-primary">
-              <GradientText className="rounded-full bg-[#1a1a1b] px-0.5">$10,000</GradientText> Lottery Pool
-            </span>
+            <span className="whitespace-nowrap font-semibold text-primary">$10,000 Lottery Pool</span>
           </div>
 
           <h1 className="mb-[18px] text-[clamp(38px,4.8vw,62px)] font-bold leading-[1.08] tracking-[-0.03em]">
