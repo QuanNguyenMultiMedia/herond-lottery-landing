@@ -37,7 +37,7 @@ export function HowItWorks() {
 
   return (
     <section id="how" className="py-[clamp(72px,10vw,128px)]">
-      <div className="mx-auto w-full max-w-[720px] px-6">
+      <div className="mx-auto w-full max-w-[1080px] px-6">
         <SectionHeading eyebrow="How it works" title="Three steps to your first ticket" />
 
         <div

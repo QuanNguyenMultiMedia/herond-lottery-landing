@@ -60,7 +60,7 @@ const RULES = [
 export function RulesFaq() {
   return (
     <section id="rules" className="py-[clamp(72px,10vw,128px)]">
-      <div className="mx-auto grid w-full max-w-[720px] grid-cols-1 gap-12 px-6">
+      <div className="mx-auto grid w-full max-w-[1080px] grid-cols-1 gap-12 px-6">
         <div>
           <SectionHeading eyebrow="Rules" title="Maximize your chances" />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
