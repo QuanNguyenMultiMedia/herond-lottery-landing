@@ -144,8 +144,10 @@ export function RewardsWinners() {
           />
         </div>
 
+        <h3 className="mt-12 text-center text-[15px] font-bold text-foreground">Winners</h3>
+
         {/* Mobile: a 3-item window with prev/next arrows (fits without wrapping or scrolling). */}
-        <div className="mt-12 flex items-center justify-center gap-2 sm:hidden">
+        <div className="mt-4 flex items-center justify-center gap-2 sm:hidden">
           <button
             type="button"
             aria-label="Show earlier weeks"
@@ -186,7 +188,7 @@ export function RewardsWinners() {
         </div>
 
         {/* Wider screens: room for the full range at once, no arrows needed. */}
-        <div className="mt-12 hidden flex-wrap items-center justify-center gap-1.5 rounded-full border border-border bg-[#161617] p-1.5 sm:flex">
+        <div className="mt-4 hidden flex-wrap items-center justify-center gap-1.5 rounded-full border border-border bg-[#161617] p-1.5 sm:flex">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.value}
@@ -250,6 +252,14 @@ export function RewardsWinners() {
                 </div>
               )}
             </div>
+            {panel.isDrawn && (
+              <div className="border-t border-border px-[22px] py-4 text-center text-[13px] font-medium text-muted-foreground">
+                Are you next?{" "}
+                <a href="#how" className="font-semibold text-primary hover:underline">
+                  Get your ticket
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

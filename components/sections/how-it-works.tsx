@@ -43,9 +43,6 @@ export function HowItWorks() {
         <div className="lg:grid lg:grid-cols-[320px_1fr] lg:items-start lg:gap-14">
           <div>
             <SectionHeading eyebrow="How it works" title="Three steps to your first ticket" />
-            <p className="-mt-6 mb-10 max-w-[460px] text-pretty text-[15px] text-muted-foreground lg:mb-0 lg:max-w-none">
-              That prize money above is real — here&apos;s exactly how you get in on it.
-            </p>
 
             {/* Desktop: vertical step list doubles as the section's left rail. */}
             <div className="mt-6 hidden lg:block lg:space-y-1.5">
@@ -79,6 +76,12 @@ export function HowItWorks() {
                         {s.body}
                       </p>
                     )}
+                    {active === i && i === 0 && (
+                      <CtaLink className="mt-3 px-6 py-3 text-[14px]">
+                        <PointIcon className="size-4" />
+                        Install Herond
+                      </CtaLink>
+                    )}
                   </div>
                 </button>
               ))}
@@ -92,9 +95,42 @@ export function HowItWorks() {
                 "linear-gradient(150deg, rgba(51,115,246,0.55), rgba(102,81,234,0.4) 45%, rgba(255,128,151,0.35) 100%)",
             }}
           >
-            <div className="overflow-hidden rounded-[17px] bg-card">
-              {/* Mobile/tablet: horizontal tabs (the desktop rail replaces these at lg+). */}
-              <div className="grid grid-cols-1 border-b border-white/[0.06] sm:grid-cols-3 lg:hidden">
+            <div className="flex flex-col overflow-hidden rounded-[17px] bg-card lg:block">
+              {/* Mobile/tablet: image up top for thumb reach, then the body copy
+                  (height fixed to the tallest step's copy so switching steps never
+                  shifts the layout), then tabs pinned to the bottom (the desktop
+                  rail replaces all of this at lg+). */}
+              <div className="order-1 px-5 pb-5 pt-5 lg:order-none">
+                <div className="relative mx-auto aspect-[1200/1142] w-full max-w-[420px] overflow-hidden rounded-xl">
+                  <Image
+                    key={step.image}
+                    src={step.image}
+                    alt={step.title}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    priority={active === 0}
+                  />
+                </div>
+
+                <div
+                  className={`mt-5 flex justify-center lg:hidden ${
+                    active === 0 ? "" : "invisible"
+                  }`}
+                  aria-hidden={active !== 0}
+                >
+                  <CtaLink className="px-6 py-3 text-[14px]" tabIndex={active === 0 ? 0 : -1}>
+                    <PointIcon className="size-4" />
+                    Install Herond
+                  </CtaLink>
+                </div>
+              </div>
+
+              <p className="order-2 flex min-h-[130px] items-center justify-center text-pretty px-6 py-4 text-center text-[13.5px] leading-relaxed text-muted-foreground lg:order-none lg:hidden">
+                {step.body}
+              </p>
+
+              <div className="order-3 grid grid-cols-1 border-t border-white/[0.06] sm:grid-cols-3 lg:order-none lg:hidden">
                 {STEPS.map((s, i) => (
                   <button
                     key={s.n}
@@ -121,33 +157,6 @@ export function HowItWorks() {
                     </span>
                   </button>
                 ))}
-              </div>
-
-              <p className="flex h-[84px] items-center justify-center text-pretty px-6 text-center text-[13.5px] text-muted-foreground lg:hidden">
-                {step.body}
-              </p>
-
-              <div className="px-5 pb-5 lg:pt-5">
-                <div className="relative mx-auto aspect-[1200/1142] w-full max-w-[420px] overflow-hidden rounded-xl bg-background">
-                  <Image
-                    key={step.image}
-                    src={step.image}
-                    alt={step.title}
-                    fill
-                    style={{ objectFit: "contain" }}
-                    sizes="(max-width: 1024px) 100vw, 420px"
-                    priority={active === 0}
-                  />
-                </div>
-
-                {active === 0 && (
-                  <div className="mt-5 flex justify-center">
-                    <CtaLink className="px-6 py-3 text-[14px]">
-                      <PointIcon className="size-4" />
-                      Install Herond
-                    </CtaLink>
-                  </div>
-                )}
               </div>
             </div>
           </div>

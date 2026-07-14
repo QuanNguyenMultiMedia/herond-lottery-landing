@@ -49,63 +49,130 @@ export function FinalCta() {
           a stub of prize + a stub of action, torn apart by a perforated seam.
           The two stubs are separate elements with a real gap between them so
           the notch bites are genuine cutouts (whatever's behind shows through),
-          not a solid patch painted to guess-match the background. */}
-      <div className="relative mx-auto w-full max-w-[540px] px-6">
-        <GradientText
-          as="div"
-          className="block w-full rounded-t-[28px] border border-b-0 border-border bg-card shadow-[0_-20px_50px_-36px_rgba(0,0,0,0.6)]"
-          style={{
-            maskImage:
-              "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
-            maskComposite: "intersect",
-            WebkitMaskImage:
-              "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
-            WebkitMaskComposite: "source-in",
-          }}
-        >
-          <div className="relative z-10 px-8 pb-9 pt-11 sm:px-12">
-            <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
-              Season 1 Grand Draw
+          not a solid patch painted to guess-match the background. On narrow
+          screens the stubs stack top/bottom; from lg up there's room to sit
+          them side by side instead, so the seam turns vertical. */}
+      <div className="relative mx-auto w-full max-w-[540px] px-6 lg:max-w-[880px]">
+        {/* Stacked layout (below lg). */}
+        <div className="lg:hidden">
+          <GradientText
+            as="div"
+            className="block w-full rounded-t-[28px] border border-b-0 border-border bg-card shadow-[0_-20px_50px_-36px_rgba(0,0,0,0.6)]"
+            style={{
+              maskImage:
+                "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
+              maskComposite: "intersect",
+              WebkitMaskImage:
+                "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
+              WebkitMaskComposite: "source-in",
+            }}
+          >
+            <div className="relative z-10 px-8 pb-9 pt-11 sm:px-12">
+              <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+                Season 1 Grand Draw
+              </div>
+              <div className="fc-amount mb-1.5 text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                $10,000
+              </div>
+              <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-white/75 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+                Total prize pool
+              </div>
             </div>
-            <div className="fc-amount mb-1.5 text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
-              $10,000
-            </div>
-            <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-white/75 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
-              Total prize pool
+          </GradientText>
+
+          <div className="relative h-6">
+            <div className="absolute inset-x-6 top-1/2 border-t border-dashed border-[var(--hp-hairline)]" />
+          </div>
+
+          <div
+            className="relative overflow-hidden rounded-b-[28px] border border-t-0 border-border bg-card shadow-[0_40px_90px_-36px_rgba(0,0,0,0.6)]"
+            style={{
+              maskImage:
+                "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px)",
+              maskComposite: "intersect",
+              WebkitMaskImage:
+                "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px)",
+              WebkitMaskComposite: "source-in",
+            }}
+          >
+            <div className="px-8 pb-11 pt-9 sm:px-12">
+              <h2 className="fc-title mb-2.5 text-[clamp(20px,2.4vw,26px)] font-semibold tracking-[-0.02em]">
+                Your next check-in could be the one.
+              </h2>
+              <p className="fc-copy mb-7 text-pretty text-[14.5px] text-muted-foreground">
+                Free to start. One check-in a day. Install Herond and you&apos;re in.
+              </p>
+              <div className="fc-cta inline-flex flex-col items-center gap-2.5">
+                <div className="text-[12px] font-semibold uppercase tracking-[.12em] text-primary/70">
+                  Get Your First Ticket
+                </div>
+                <CtaLink className="px-8 py-3.5 text-base">
+                  <PointIcon className="size-[18px]" />
+                  Install Herond
+                </CtaLink>
+              </div>
             </div>
           </div>
-        </GradientText>
-
-        <div className="relative h-6">
-          <div className="absolute inset-x-6 top-1/2 border-t border-dashed border-[var(--hp-hairline)]" />
         </div>
 
-        <div
-          className="relative overflow-hidden rounded-b-[28px] border border-t-0 border-border bg-card shadow-[0_40px_90px_-36px_rgba(0,0,0,0.6)]"
-          style={{
-            maskImage:
-              "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px)",
-            maskComposite: "intersect",
-            WebkitMaskImage:
-              "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px)",
-            WebkitMaskComposite: "source-in",
-          }}
-        >
-          <div className="px-8 pb-11 pt-9 sm:px-12">
-            <h2 className="fc-title mb-2.5 text-[clamp(20px,2.4vw,26px)] font-semibold tracking-[-0.02em]">
-              Your next check-in could be the one.
-            </h2>
-            <p className="fc-copy mb-7 text-pretty text-[14.5px] text-muted-foreground">
-              Free to start. One check-in a day. Install Herond and you&apos;re in.
-            </p>
-            <div className="fc-cta inline-flex flex-col items-center gap-2.5">
-              <div className="text-[12px] font-semibold uppercase tracking-[.12em] text-primary/70">
-                Get Your First Ticket
+        {/* Side-by-side layout (lg and up) — same two stubs, torn seam now vertical. */}
+        <div className="hidden lg:flex lg:items-stretch">
+          <GradientText
+            as="div"
+            className="flex flex-1 items-center rounded-l-[28px] border border-r-0 border-border bg-card shadow-[-20px_0_50px_-36px_rgba(0,0,0,0.6)]"
+            style={{
+              maskImage:
+                "radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
+              maskComposite: "intersect",
+              WebkitMaskImage:
+                "radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
+              WebkitMaskComposite: "source-in",
+            }}
+          >
+            <div className="relative z-10 px-14 py-14 text-left xl:px-16">
+              <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+                Season 1 Grand Draw
               </div>
-              <CtaLink className="px-8 py-3.5 text-base">
-                <PointIcon className="size-[18px]" />
-                Install Herond
-              </CtaLink>
+              <div className="fc-amount mb-1.5 text-[clamp(46px,4.5vw,68px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                $10,000
+              </div>
+              <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-white/75 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+                Total prize pool
+              </div>
+            </div>
+          </GradientText>
+
+          <div className="relative w-6 flex-none">
+            <div className="absolute inset-y-6 left-1/2 border-l border-dashed border-[var(--hp-hairline)]" />
+          </div>
+
+          <div
+            className="relative flex flex-1 items-center overflow-hidden rounded-r-[28px] border border-l-0 border-border bg-card shadow-[20px_0_50px_-36px_rgba(0,0,0,0.6)]"
+            style={{
+              maskImage:
+                "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px)",
+              maskComposite: "intersect",
+              WebkitMaskImage:
+                "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px)",
+              WebkitMaskComposite: "source-in",
+            }}
+          >
+            <div className="px-14 py-14 text-left xl:px-16">
+              <h2 className="fc-title mb-2.5 text-[clamp(20px,2vw,26px)] font-semibold tracking-[-0.02em]">
+                Your next check-in could be the one.
+              </h2>
+              <p className="fc-copy mb-7 max-w-[360px] text-pretty text-[14.5px] text-muted-foreground">
+                Free to start. One check-in a day. Install Herond and you&apos;re in.
+              </p>
+              <div className="fc-cta inline-flex flex-col items-start gap-2.5">
+                <div className="text-[12px] font-semibold uppercase tracking-[.12em] text-primary/70">
+                  Get Your First Ticket
+                </div>
+                <CtaLink className="px-8 py-3.5 text-base">
+                  <PointIcon className="size-[18px]" />
+                  Install Herond
+                </CtaLink>
+              </div>
             </div>
           </div>
         </div>
