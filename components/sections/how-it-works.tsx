@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { CtaLink } from "@/components/cta-link";
 import { PointIcon } from "@/components/icons";
+import { FooterAurora } from "@/components/footer-aurora";
 
 const STEPS = [
   {
@@ -100,29 +101,34 @@ export function HowItWorks() {
                   (height fixed to the tallest step's copy so switching steps never
                   shifts the layout), then tabs pinned to the bottom (the desktop
                   rail replaces all of this at lg+). */}
-              <div className="order-1 px-5 pb-5 pt-5 lg:order-none">
-                <div className="relative mx-auto aspect-[1200/1142] w-full max-w-[420px] overflow-hidden rounded-xl">
-                  <Image
-                    key={step.image}
-                    src={step.image}
-                    alt={step.title}
-                    fill
-                    style={{ objectFit: "contain" }}
-                    sizes="(max-width: 1024px) 100vw, 420px"
-                    priority={active === 0}
-                  />
-                </div>
+              <div className="relative order-1 overflow-hidden px-5 pb-5 pt-5 lg:order-none">
+                <FooterAurora className="pointer-events-none absolute inset-0 h-full w-full" />
+                <div className="pointer-events-none absolute inset-0 bg-background/55" />
 
-                <div
-                  className={`mt-5 flex justify-center lg:hidden ${
-                    active === 0 ? "" : "invisible"
-                  }`}
-                  aria-hidden={active !== 0}
-                >
-                  <CtaLink className="px-6 py-3 text-[14px]" tabIndex={active === 0 ? 0 : -1}>
-                    <PointIcon className="size-4" />
-                    Install Herond
-                  </CtaLink>
+                <div className="relative z-10">
+                  <div className="relative mx-auto aspect-[1200/1142] w-full max-w-[420px] overflow-hidden rounded-xl">
+                    <Image
+                      key={step.image}
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      style={{ objectFit: "contain" }}
+                      sizes="(max-width: 1024px) 100vw, 420px"
+                      priority={active === 0}
+                    />
+                  </div>
+
+                  <div
+                    className={`mt-5 flex justify-center lg:hidden ${
+                      active === 0 ? "" : "invisible"
+                    }`}
+                    aria-hidden={active !== 0}
+                  >
+                    <CtaLink className="px-6 py-3 text-[14px]" tabIndex={active === 0 ? 0 : -1}>
+                      <PointIcon className="size-4" />
+                      Install Herond
+                    </CtaLink>
+                  </div>
                 </div>
               </div>
 
