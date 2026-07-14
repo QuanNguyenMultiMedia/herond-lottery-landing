@@ -14,22 +14,52 @@ interface GvizRow {
   c: (GvizCell | null)[];
 }
 
-/** Converts a Google Sheet share URL into its gviz JSON query endpoint. */
-function toGvizEndpoint(url: string): string {
-  const match = url.match(/docs\.google\.com\/spreadsheets\/d\/([\w-]+)/);
-  if (match && !url.includes("gviz")) {
-    return `https://docs.google.com/spreadsheets/d/${match[1]}/gviz/tq?tqx=out:json`;
-  }
-  return url;
+interface GvizResponse {
+  table?: { rows?: GvizRow[] };
 }
 
-/** The gviz endpoint wraps its JSON in a JS callback; strip it before parsing. */
-function parseGviz(text: string): SheetData | null {
-  const start = text.indexOf("{");
-  const end = text.lastIndexOf("}");
-  if (start < 0 || end < 0) return null;
+function extractSheetId(url: string): string | null {
+  const match = url.match(/docs\.google\.com\/spreadsheets\/d\/([\w-]+)/);
+  return match ? match[1] : null;
+}
 
-  const json = JSON.parse(text.slice(start, end + 1));
+/**
+ * The gviz endpoint sends no Access-Control-Allow-Origin header, so a plain
+ * fetch() from a browser is CORS-blocked on every origin except Google's own
+ * — it fails silently and looks like a dead link. gviz is actually designed
+ * for JSONP embedding (that's what its `responseHandler` param is for), so we
+ * load it as a <script> tag instead, which never triggers CORS.
+ */
+function fetchGvizViaJsonp(sheetId: string): Promise<GvizResponse> {
+  return new Promise((resolve, reject) => {
+    const callbackName = `__gvizCallback_${Math.random().toString(36).slice(2)}`;
+    const script = document.createElement("script");
+
+    const cleanup = () => {
+      delete (window as unknown as Record<string, unknown>)[callbackName];
+      script.remove();
+      clearTimeout(timer);
+    };
+    const timer = setTimeout(() => {
+      cleanup();
+      reject(new Error("gviz request timed out"));
+    }, 8000);
+
+    (window as unknown as Record<string, (json: GvizResponse) => void>)[callbackName] = (json) => {
+      cleanup();
+      resolve(json);
+    };
+
+    script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json;responseHandler=${callbackName}`;
+    script.onerror = () => {
+      cleanup();
+      reject(new Error("gviz script failed to load"));
+    };
+    document.head.appendChild(script);
+  });
+}
+
+function parseGvizTable(json: GvizResponse): SheetData {
   const rows: GvizRow[] = json?.table?.rows ?? [];
 
   const byWeek: Record<number, Draw[]> = {};
@@ -79,14 +109,10 @@ function parseGviz(text: string): SheetData | null {
  */
 export async function fetchWinners(sheetUrl: string): Promise<SheetData | null> {
   try {
-    const endpoint = toGvizEndpoint(sheetUrl.trim());
-    const res = await fetch(endpoint, { next: { revalidate: 60 } });
-    const text = await res.text();
-    try {
-      return JSON.parse(text) as SheetData;
-    } catch {
-      return parseGviz(text);
-    }
+    const sheetId = extractSheetId(sheetUrl.trim());
+    if (!sheetId) return null;
+    const json = await fetchGvizViaJsonp(sheetId);
+    return parseGvizTable(json);
   } catch (err) {
     console.warn("Winners sheet unavailable — showing fallback data.", err);
     return null;
