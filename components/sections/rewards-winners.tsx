@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TiltCard } from "@/components/tilt-card";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { PointIcon, LinePointIcon } from "@/components/icons";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchWinners } from "@/lib/winners";
 import {
   WEEKS_META,
@@ -23,10 +23,19 @@ const ordinal = (n: number) => {
 
 type Target = number | "final";
 
+const NAV_ITEMS: { value: Target; label: string }[] = [
+  ...WEEKS_META.map((m) => ({ value: m.week, label: `Week ${m.week}` })),
+  { value: "final" as const, label: "Grand Draw" },
+];
+const VISIBLE_COUNT = 3;
+
 export function RewardsWinners() {
   const [weeksData, setWeeksData] = useState<WeekEntry[]>(FALLBACK_WEEKS);
   const [finalData, setFinalData] = useState<FinalData>(FALLBACK_FINAL);
   const [active, setActive] = useState<Target>(1);
+  const [navStart, setNavStart] = useState(0);
+  const maxNavStart = NAV_ITEMS.length - VISIBLE_COUNT;
+  const visibleItems = NAV_ITEMS.slice(navStart, navStart + VISIBLE_COUNT);
 
   useEffect(() => {
     fetchWinners(SHEET_URL).then((data) => {
@@ -54,8 +63,8 @@ export function RewardsWinners() {
           : "Coming Soon",
         badgeBg: "rgba(255,195,0,0.12)",
         badgeColor: "#ffd60a",
-        cardBorder: "1.5px solid rgba(255,195,0,0.25)",
-        cardShadow: "0 0 48px rgba(255,195,0,0.12), 0 8px 32px rgba(0,0,0,0.45)",
+        cardBorder: "1px solid rgba(255,214,10,0.24)",
+        cardShadow: "none",
         lockedTitle: "Coming Soon",
         lockedSub: "Winners announced at the end of Season 1",
       };
@@ -73,7 +82,7 @@ export function RewardsWinners() {
         : "Coming Soon",
       badgeBg: isDrawn ? "rgba(40,201,104,0.12)" : "rgba(116,116,128,0.18)",
       badgeColor: isDrawn ? "#28c968" : "rgba(235,235,245,0.6)",
-      cardBorder: "none",
+      cardBorder: "1px solid var(--border)",
       cardShadow: "none",
       lockedTitle: `Week ${active} — Coming Soon`,
       lockedSub: `Winners announced on ${ordinal(meta.day)} ${meta.month} ${meta.year}`,
@@ -81,10 +90,10 @@ export function RewardsWinners() {
   }, [active, byWeek, finalData]);
 
   return (
-    <section id="rewards" className="flex min-h-svh flex-col justify-center py-[clamp(40px,6vw,72px)]">
-      <div className="mx-auto max-w-[1080px] px-6">
+    <section id="rewards" className="py-[clamp(72px,10vw,128px)]">
+      <div className="mx-auto w-full min-w-0 max-w-[1080px] px-6">
         <SectionHeading eyebrow="Rewards" title="$10,000 Up for grabs" />
-        <p className="-mt-6 mb-10 max-w-[520px] text-pretty text-[15px] text-muted-foreground">
+        <p className="-mt-6 mb-10 max-w-[420px] text-pretty text-[15px] text-muted-foreground">
           Real prizes every week, plus a Grand Draw built from every ticket you&apos;ve earned all
           season.
         </p>
@@ -127,26 +136,44 @@ export function RewardsWinners() {
           />
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <Tabs
-            value={String(active)}
-            onValueChange={(v) => setActive(v === "final" ? "final" : Number(v))}
+        <div className="mt-12 flex items-center justify-center gap-2">
+          <button
+            type="button"
+            aria-label="Show earlier weeks"
+            onClick={() => setNavStart((s) => Math.max(0, s - 1))}
+            disabled={navStart === 0}
+            className="flex size-9 flex-none items-center justify-center rounded-full border border-border bg-[#161617] text-white/70 transition-colors hover:border-white/15 hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
           >
-            <TabsList className="h-auto max-w-full flex-wrap gap-1 rounded-full bg-[#1c1c1e] p-1">
-              {WEEKS_META.map((m) => (
-                <TabsTrigger
-                  key={m.week}
-                  value={String(m.week)}
-                  className="rounded-full px-4.5 py-2 text-[13px] font-semibold"
-                >
-                  Week {m.week}
-                </TabsTrigger>
-              ))}
-              <TabsTrigger value="final" className="rounded-full px-4.5 py-2 text-[13px] font-semibold">
-                Grand Draw
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
+            <ChevronLeft className="size-4" />
+          </button>
+
+          <div className="flex min-w-0 flex-1 justify-center gap-1 rounded-full border border-border bg-[#161617] p-1 sm:flex-none">
+            {visibleItems.map((item) => (
+              <button
+                key={item.value}
+                type="button"
+                onClick={() => setActive(item.value)}
+                aria-pressed={active === item.value}
+                className={`min-w-0 flex-1 shrink-0 truncate rounded-full px-2.5 py-1.5 text-[12px] font-medium transition-colors sm:flex-none sm:px-4 sm:text-[13px] ${
+                  active === item.value
+                    ? "bg-[#2c2c2e] font-semibold text-foreground shadow-sm"
+                    : "text-foreground/55 hover:text-foreground"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            aria-label="Show later weeks"
+            onClick={() => setNavStart((s) => Math.min(maxNavStart, s + 1))}
+            disabled={navStart >= maxNavStart}
+            className="flex size-9 flex-none items-center justify-center rounded-full border border-border bg-[#161617] text-white/70 transition-colors hover:border-white/15 hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronRight className="size-4" />
+          </button>
         </div>
 
         <div className="mt-5">
@@ -229,21 +256,21 @@ function PoolCard({
     <TiltCard
       className={
         glow
-          ? "border-[1.5px] border-[rgba(255,195,0,0.25)] p-[22px] shadow-[0_0_48px_rgba(255,195,0,0.12),0_8px_32px_rgba(0,0,0,0.45)] hover:shadow-[0_0_64px_rgba(255,195,0,0.22),0_12px_36px_rgba(0,0,0,0.5)]"
-          : "p-[22px] hover:shadow-[0_12px_32px_rgba(0,0,0,0.45),0_0_24px_rgba(51,115,246,0.18),0_0_0_1px_rgba(51,115,246,0.3)]"
+          ? "border-[rgba(255,214,10,0.28)] p-6 hover:border-[rgba(255,214,10,0.45)]"
+          : "p-6"
       }
     >
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
         <div
-          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold tracking-[.06em]"
+          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[.08em]"
           style={{ background: badgeBg, color: badgeColor }}
         >
           <PointIcon className="size-3" style={{ color: badgeColor }} /> {badge}
         </div>
-        <div className="text-[13px] font-semibold text-muted-foreground">{cadence}</div>
+        <div className="text-[13px] font-medium text-muted-foreground">{cadence}</div>
       </div>
       <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-        <div className="text-[30px] font-extrabold tracking-[-0.02em] tabular-nums">{amount}</div>
+        <div className="text-[32px] font-bold tracking-[-0.02em] tabular-nums">{amount}</div>
         <div className="text-[13px] text-muted-foreground">
           <b className="text-[15px] text-foreground">{winners}</b> winners{" "}
           {winners === "500+" ? "" : "/ week"}

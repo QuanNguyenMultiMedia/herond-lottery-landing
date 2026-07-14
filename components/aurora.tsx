@@ -145,7 +145,7 @@ export function Aurora({ className }: { className?: string }) {
       gl.uniform3f(uSkyTop, 0.0118, 0.0078, 0.0353);
       gl.uniform3f(uSkyBottom, 0.0941, 0.0431, 0.1686);
       gl.uniform1f(uSpeed, 0.0500);
-      gl.uniform1f(uIntensity, 2.0500);
+      gl.uniform1f(uIntensity, 1.4000);
       gl.uniform2f(uWaveDir, -26.5000, -23.5000);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       if (!reduceMotion) raf = requestAnimationFrame(render);

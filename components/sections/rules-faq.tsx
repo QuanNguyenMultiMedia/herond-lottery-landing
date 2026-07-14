@@ -59,21 +59,18 @@ const RULES = [
 
 export function RulesFaq() {
   return (
-    <section id="rules" className="flex min-h-svh flex-col justify-center py-[clamp(32px,5vw,56px)]">
-      <div className="mx-auto grid w-full max-w-[720px] grid-cols-1 gap-8 px-6">
+    <section id="rules" className="py-[clamp(72px,10vw,128px)]">
+      <div className="mx-auto grid w-full max-w-[720px] grid-cols-1 gap-12 px-6">
         <div>
           <SectionHeading eyebrow="Rules" title="Maximize your chances" />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {RULES.map((rule) => (
-              <TiltCard
-                key={rule.title}
-                className="p-4 hover:shadow-[0_12px_28px_rgba(0,0,0,0.4),0_0_0_1px_rgba(51,115,246,0.25)]"
-              >
+              <TiltCard key={rule.title} className="p-5">
                 <div className="mb-2 flex items-center gap-2">
                   <rule.icon className={`size-4 flex-none ${rule.iconColor}`} />
-                  <h4 className="text-[13.5px] font-bold">{rule.title}</h4>
+                  <h4 className="text-[13.5px] font-semibold">{rule.title}</h4>
                 </div>
-                <p className="text-pretty text-[12.5px] leading-relaxed text-muted-foreground">
+                <p className="text-pretty text-[13px] leading-relaxed text-muted-foreground">
                   {rule.body}
                 </p>
               </TiltCard>
@@ -85,16 +82,16 @@ export function RulesFaq() {
           <SectionHeading eyebrow="FAQ" />
           <div className="grid grid-cols-1 gap-2">
             {FAQS.map((faq, i) => (
-              <Accordion key={i} className="rounded-2xl bg-card">
+              <Accordion key={i} className="rounded-xl border border-border bg-card">
                 <AccordionItem value={i} className="border-b-0">
-                  <AccordionTrigger className="px-4 py-3 text-[13.5px] font-semibold hover:no-underline">
+                  <AccordionTrigger className="px-4 py-3.5 text-[14px] font-medium hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-3">
+                  <AccordionContent className="px-4 pb-3.5">
                     {faq.paras.map((p, pi) => (
                       <p
                         key={pi}
-                        className="mb-1.5 text-pretty text-[12.5px] text-muted-foreground last:mb-0"
+                        className="mb-1.5 text-pretty text-[13px] leading-relaxed text-muted-foreground last:mb-0"
                       >
                         {p}
                       </p>

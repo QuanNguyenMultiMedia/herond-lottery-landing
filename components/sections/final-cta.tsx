@@ -33,28 +33,28 @@ export function FinalCta() {
   return (
     <section
       ref={rootRef}
-      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden py-[clamp(72px,10vw,130px)] text-center"
+      className="relative flex flex-col items-center justify-center overflow-hidden py-[clamp(96px,14vw,180px)] text-center"
     >
       <div
-        className="fc-glow pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-[80px]"
+        className="fc-glow pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-45 blur-[90px]"
         style={{
           background:
             "conic-gradient(from 0deg, rgba(51,115,246,0.5), rgba(102,81,234,0.35), rgba(255,128,151,0.3), rgba(51,115,246,0.5))",
         }}
       />
       <div className="relative mx-auto max-w-[1080px] px-6">
-        <div className="fc-amount mb-3.5 text-[clamp(52px,7.5vw,88px)] font-extrabold leading-none tracking-[-0.025em] tabular-nums text-foreground drop-shadow-[0_0_40px_rgba(51,115,246,0.45)]">
+        <div className="fc-amount mb-3.5 text-[clamp(52px,7.5vw,88px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_0_30px_rgba(51,115,246,0.35)]">
           $10,000
-          <span className="ml-2.5 text-[0.32em] font-semibold text-muted-foreground">pool</span>
+          <span className="ml-2.5 text-[0.32em] font-medium text-muted-foreground">pool</span>
         </div>
-        <h2 className="fc-title mb-2.5 text-[clamp(22px,2.8vw,30px)] font-bold tracking-[-0.015em]">
+        <h2 className="fc-title mb-2.5 text-[clamp(22px,2.8vw,30px)] font-semibold tracking-[-0.02em]">
           Your next check-in could be the one.
         </h2>
         <p className="fc-copy mb-[34px] text-pretty text-[15px] text-muted-foreground">
           Free to start. One check-in a day. Install Herond and you&apos;re in.
         </p>
         <div className="fc-cta inline-block">
-          <CtaLink className="px-8 py-4 text-base shadow-[0_0_50px_rgba(51,115,246,0.35)]">
+          <CtaLink className="px-8 py-4 text-base">
             <video
               src="/assets/herond-icon-loop.webm"
               autoPlay
