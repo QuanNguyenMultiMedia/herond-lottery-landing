@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { CtaLink } from "@/components/cta-link";
+import { PointIcon } from "@/components/icons";
 import { useCountdown } from "@/lib/countdown";
 import { WEEKS_META, DRAW_TIME } from "@/data/season";
 
@@ -169,16 +170,12 @@ export function Hero() {
             </div>
           )}
 
+          <div className="mb-2.5 text-[12px] font-semibold uppercase tracking-[.12em] text-primary/70">
+            Get Your First Ticket
+          </div>
           <CtaLink>
-            <video
-              src="/assets/herond-icon-loop.webm"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block h-[22px] w-[22px]"
-            />
-            Install Herond — Get Your First Ticket
+            <PointIcon className="size-[18px]" />
+            Install Herond
           </CtaLink>
           <div className="mt-4 text-[12.5px] text-white/30">
             Free to enter · 1-minute install · Tickets never expire

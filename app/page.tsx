@@ -10,20 +10,20 @@ import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-1 flex-col pb-20 sm:pb-0">
+    <div className="relative flex flex-1 flex-col">
       <div className="aurora-banner pointer-events-none absolute inset-x-0 top-0 z-0 h-[320px] w-full overflow-hidden">
         <Aurora className="absolute inset-0 h-full w-full opacity-80" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52 bg-gradient-to-b from-transparent to-background" />
       </div>
       <Nav />
-      <main>
+      <main className="relative">
         <Hero />
         <RewardsWinners />
         <HowItWorks />
         <RulesFaq />
         <FinalCta />
+        <StickyMobileCta />
       </main>
-      <StickyMobileCta />
       <Footer />
     </div>
   );

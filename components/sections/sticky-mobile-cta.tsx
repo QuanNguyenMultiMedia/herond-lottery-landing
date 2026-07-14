@@ -5,7 +5,7 @@ import { HEROND_POINT_LINK } from "@/data/season";
 /** Fixed bottom CTA shown only on small screens (media-query driven, no JS resize listener). */
 export function StickyMobileCta() {
   return (
-    <div className="hp-sticky-cta fixed inset-x-0 bottom-0 z-90 border-t border-border bg-background/85 px-4 py-3 backdrop-blur-xl sm:hidden">
+    <div className="hp-sticky-cta sticky bottom-0 z-20 border-t border-border bg-background/85 px-4 py-3 backdrop-blur-xl sm:hidden">
       <Link
         href={HEROND_POINT_LINK}
         target="_blank"

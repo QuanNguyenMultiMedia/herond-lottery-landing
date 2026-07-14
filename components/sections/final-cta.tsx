@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { CtaLink } from "@/components/cta-link";
+import { PointIcon } from "@/components/icons";
 
 export function FinalCta() {
   const rootRef = useRef<HTMLElement>(null);
@@ -33,38 +34,78 @@ export function FinalCta() {
   return (
     <section
       ref={rootRef}
-      className="relative flex flex-col items-center justify-center overflow-hidden py-[clamp(96px,14vw,180px)] text-center"
+      className="relative flex flex-col items-center justify-center overflow-hidden py-[clamp(80px,12vw,140px)] text-center"
     >
       <div
-        className="fc-glow pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-45 blur-[90px]"
+        className="fc-glow pointer-events-none absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-[100px]"
         style={{
           background:
             "conic-gradient(from 0deg, rgba(51,115,246,0.5), rgba(102,81,234,0.35), rgba(255,128,151,0.3), rgba(51,115,246,0.5))",
         }}
       />
-      <div className="relative mx-auto max-w-[1080px] px-6">
-        <div className="fc-amount mb-3.5 text-[clamp(52px,7.5vw,88px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_0_30px_rgba(51,115,246,0.35)]">
-          $10,000
-          <span className="ml-2.5 text-[0.32em] font-medium text-muted-foreground">pool</span>
+
+      {/* The product is a lottery ticket — the closing CTA is shaped like one:
+          a stub of prize + a stub of action, torn apart by a perforated seam.
+          The two stubs are separate elements with a real gap between them so
+          the notch bites are genuine cutouts (whatever's behind shows through),
+          not a solid patch painted to guess-match the background. */}
+      <div className="relative mx-auto w-full max-w-[540px] px-6">
+        <div
+          className="relative overflow-hidden rounded-t-[28px] border border-b-0 border-border bg-card shadow-[0_-20px_50px_-36px_rgba(0,0,0,0.6)]"
+          style={{
+            maskImage:
+              "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
+            maskComposite: "intersect",
+            WebkitMaskImage:
+              "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
+            WebkitMaskComposite: "source-in",
+          }}
+        >
+          <div className="px-8 pb-9 pt-11 sm:px-12">
+            <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80">
+              Season 1 Grand Draw
+            </div>
+            <div className="fc-amount mb-1.5 text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_0_30px_rgba(51,115,246,0.35)]">
+              $10,000
+            </div>
+            <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-muted-foreground">
+              Total prize pool
+            </div>
+          </div>
         </div>
-        <h2 className="fc-title mb-2.5 text-[clamp(22px,2.8vw,30px)] font-semibold tracking-[-0.02em]">
-          Your next check-in could be the one.
-        </h2>
-        <p className="fc-copy mb-[34px] text-pretty text-[15px] text-muted-foreground">
-          Free to start. One check-in a day. Install Herond and you&apos;re in.
-        </p>
-        <div className="fc-cta inline-block">
-          <CtaLink className="px-8 py-4 text-base">
-            <video
-              src="/assets/herond-icon-loop.webm"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block h-[22px] w-[22px]"
-            />
-            Install Herond — Get Your First Ticket
-          </CtaLink>
+
+        <div className="relative h-6">
+          <div className="absolute inset-x-6 top-1/2 border-t border-dashed border-[var(--hp-hairline)]" />
+        </div>
+
+        <div
+          className="relative overflow-hidden rounded-b-[28px] border border-t-0 border-border bg-card shadow-[0_40px_90px_-36px_rgba(0,0,0,0.6)]"
+          style={{
+            maskImage:
+              "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px)",
+            maskComposite: "intersect",
+            WebkitMaskImage:
+              "radial-gradient(circle 14px at 0 0, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 0, transparent 14px, black 15px)",
+            WebkitMaskComposite: "source-in",
+          }}
+        >
+          <div className="px-8 pb-11 pt-9 sm:px-12">
+            <h2 className="fc-title mb-2.5 text-[clamp(20px,2.4vw,26px)] font-semibold tracking-[-0.02em]">
+              Your next check-in could be the one.
+            </h2>
+            <p className="fc-copy mb-7 text-pretty text-[14.5px] text-muted-foreground">
+              Free to start. One check-in a day. Install Herond and you&apos;re in.
+            </p>
+            <div className="fc-cta inline-flex flex-col items-center gap-2.5">
+              <div className="text-[12px] font-semibold uppercase tracking-[.12em] text-primary/70">
+                Get Your First Ticket
+              </div>
+              <CtaLink className="px-8 py-3.5 text-base">
+                <PointIcon className="size-[18px]" />
+                Install Herond
+              </CtaLink>
+            </div>
+          </div>
         </div>
       </div>
     </section>

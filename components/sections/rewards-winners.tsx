@@ -136,7 +136,8 @@ export function RewardsWinners() {
           />
         </div>
 
-        <div className="mt-12 flex items-center justify-center gap-2">
+        {/* Mobile: a 3-item window with prev/next arrows (fits without wrapping or scrolling). */}
+        <div className="mt-12 flex items-center justify-center gap-2 sm:hidden">
           <button
             type="button"
             aria-label="Show earlier weeks"
@@ -147,14 +148,14 @@ export function RewardsWinners() {
             <ChevronLeft className="size-4" />
           </button>
 
-          <div className="flex min-w-0 flex-1 justify-center gap-1 rounded-full border border-border bg-[#161617] p-1 sm:flex-none">
+          <div className="flex min-w-0 justify-center gap-1 rounded-full border border-border bg-[#161617] p-1">
             {visibleItems.map((item) => (
               <button
                 key={item.value}
                 type="button"
                 onClick={() => setActive(item.value)}
                 aria-pressed={active === item.value}
-                className={`min-w-0 flex-1 shrink-0 truncate rounded-full px-2.5 py-1.5 text-[12px] font-medium transition-colors sm:flex-none sm:px-4 sm:text-[13px] ${
+                className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-[12px] font-medium transition-colors ${
                   active === item.value
                     ? "bg-[#2c2c2e] font-semibold text-foreground shadow-sm"
                     : "text-foreground/55 hover:text-foreground"
@@ -174,6 +175,25 @@ export function RewardsWinners() {
           >
             <ChevronRight className="size-4" />
           </button>
+        </div>
+
+        {/* Wider screens: room for the full range at once, no arrows needed. */}
+        <div className="mt-12 hidden flex-wrap items-center justify-center gap-1.5 rounded-full border border-border bg-[#161617] p-1.5 sm:flex">
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.value}
+              type="button"
+              onClick={() => setActive(item.value)}
+              aria-pressed={active === item.value}
+              className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors ${
+                active === item.value
+                  ? "bg-[#2c2c2e] font-semibold text-foreground shadow-sm"
+                  : "text-foreground/55 hover:text-foreground"
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
 
         <div className="mt-5">

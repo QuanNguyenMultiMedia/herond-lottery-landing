@@ -10,8 +10,10 @@ const LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative flex flex-wrap items-center justify-between gap-3 overflow-hidden border-t border-border px-4 py-[26px] text-[13px] text-white/30 sm:px-8">
-      <FooterAurora className="pointer-events-none absolute inset-0 h-full w-full" />
+    <footer className="relative flex flex-col items-center gap-4 overflow-hidden border-t border-border px-4 py-7 text-center text-[13px] text-white/30 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-3 sm:px-8 sm:py-[26px] sm:text-left">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px] overflow-hidden">
+        <FooterAurora className="absolute inset-0 h-full w-full" />
+      </div>
       <div className="pointer-events-none absolute inset-0 bg-background/55" />
       <div className="relative z-10 flex items-center gap-2.5">
         <Image
@@ -23,7 +25,7 @@ export function Footer() {
         />
         <span>© 2026 Herond Browser</span>
       </div>
-      <div className="relative z-10 flex gap-4.5">
+      <div className="relative z-10 flex flex-wrap justify-center gap-4.5">
         {LINKS.map((link) => (
           <Link
             key={link.href}
