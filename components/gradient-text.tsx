@@ -13,9 +13,11 @@ interface GradientTextProps
 }
 
 /**
- * Brand-color glow behind a numeral/word — same four hues as the footer
- * aurora (blue/purple/pink/red), blended with mix-blend-lighten since the
- * site only has a dark theme (no light-mode variant needed).
+ * Brand-color wash behind a numeral/word — same four hues as the footer
+ * aurora (blue/purple/pink/red), as a slow-panning linear gradient. An
+ * earlier version used four blurred, independently-animated color blobs
+ * blended with mix-blend-lighten; at any given frame two blobs could
+ * dominate and read as a garish soft ellipse. A plain gradient can't do that.
  */
 function GradientText({ className, children, as: Component = "span", ...props }: GradientTextProps) {
   const MotionComponent = motion.create(Component);
@@ -23,23 +25,16 @@ function GradientText({ className, children, as: Component = "span", ...props }:
   return (
     <MotionComponent className={cn("relative inline-flex overflow-hidden bg-background", className)} {...props}>
       {children}
-      {/* Edge-masked so a blob mid-travel gets soft-clipped instead of showing
-          a hard ellipse edge against the container bounds; heavier blur keeps
-          each color point diffuse even before it reaches the mask falloff. */}
       <span
-        className="pointer-events-none absolute inset-0 mix-blend-lighten"
+        className="pointer-events-none absolute inset-0 animate-[gradient-pan_10s_ease-in-out_infinite] mix-blend-lighten"
         style={{
-          maskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
+          backgroundImage:
+            "linear-gradient(115deg, hsl(var(--gradient-1)), hsl(var(--gradient-2)), hsl(var(--gradient-3)), hsl(var(--gradient-4)))",
+          backgroundSize: "280% 280%",
         }}
-      >
-        <span className="pointer-events-none absolute -top-1/2 h-[30vw] w-[30vw] animate-[gradient-border_6s_ease-in-out_infinite,gradient-1_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--gradient-1))] mix-blend-overlay blur-[2.5rem]"></span>
-        <span className="pointer-events-none absolute right-0 top-0 h-[30vw] w-[30vw] animate-[gradient-border_6s_ease-in-out_infinite,gradient-2_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--gradient-2))] mix-blend-overlay blur-[2.5rem]"></span>
-        <span className="pointer-events-none absolute bottom-0 left-0 h-[30vw] w-[30vw] animate-[gradient-border_6s_ease-in-out_infinite,gradient-3_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--gradient-3))] mix-blend-overlay blur-[2.5rem]"></span>
-        <span className="pointer-events-none absolute -bottom-1/2 right-0 h-[30vw] w-[30vw] animate-[gradient-border_6s_ease-in-out_infinite,gradient-4_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--gradient-4))] mix-blend-overlay blur-[2.5rem]"></span>
-      </span>
+      />
       {/* Grain — same idea as the footer aurora's per-pixel dither, keeps the
-          blended color flat from reading as a smooth CG gradient. */}
+          gradient from reading as a flat CG wash. */}
       <span
         className="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay"
         style={{
