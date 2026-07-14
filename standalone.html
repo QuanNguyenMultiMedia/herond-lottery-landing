@@ -434,72 +434,120 @@
     <!-- How It Works Section -->
     <section id="how" class="py-[clamp(72px,10vw,128px)]">
       <div class="mx-auto w-full max-w-[1080px] px-6">
-        
-        <!-- Section Heading -->
-        <div class="mb-8 flex items-center gap-4">
-          <span class="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80">How it works</span>
-          <span class="h-px flex-1 bg-white/10"></span>
-        </div>
-        <h2 class="mb-10 text-[clamp(26px,3.2vw,34px)] font-semibold tracking-[-0.02em]">Three steps to your first ticket</h2>
+        <div class="lg:grid lg:grid-cols-[320px_1fr] lg:items-start lg:gap-14">
 
-        <!-- Interactive tabs box -->
-        <div class="rounded-2xl p-px shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)]" style="background: linear-gradient(150deg, rgba(51,115,246,0.55), rgba(102,81,234,0.4) 45%, rgba(255,128,151,0.35) 100%);">
-          <div class="overflow-hidden rounded-[17px] bg-card">
-
-            <!-- Image up top for thumb reach; text below (fixed height so switching
-                 steps never shifts the layout); tabs pinned to the bottom. -->
-            <div class="px-5 pb-5 pt-5">
-              <div class="relative aspect-[1200/1142] w-full overflow-hidden rounded-xl flex items-center justify-center">
-                <img
-                  id="step-showcase-image"
-                  src="public/assets/how-it-works/step-1.webp"
-                  alt="Install"
-                  class="max-h-full max-w-full object-contain"
-                >
-              </div>
-
-              <div id="step-cta-wrap" class="mt-5 flex justify-center">
-                <a href="https://points.herond.org/?utm_source=website&utm_medium=campaign1" target="_blank" class="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3 text-[14px] font-semibold text-white no-underline shadow-[0_8px_24px_-6px_rgba(51,115,246,0.55)] transition-all hover:scale-[1.015] active:scale-[0.985] hover:bg-[#4680ff] hover:shadow-[0_10px_30px_-6px_rgba(51,115,246,0.7)]">
-                  <svg viewBox="0 0 17 18" fill="none" class="size-4"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.07227 0.272731C7.70399 -0.0908033 8.48151 -0.0906919 9.11328 0.272731L15.1602 3.75222C15.7946 4.11731 16.1864 4.79372 16.1865 5.52566V12.4739C16.1865 13.206 15.7947 13.8822 15.1602 14.2473L9.11328 17.7268C8.48149 18.0904 7.70404 18.0904 7.07227 17.7268L1.02539 14.2473C0.391012 13.8822 0 13.2059 0 12.4739V5.52566C0.000100522 4.79373 0.390997 4.11731 1.02539 3.75222L7.07227 0.272731ZM8.32129 2.70632C8.2564 2.46532 7.91463 2.46544 7.84961 2.70632L6.93164 6.57644C6.90374 6.69415 6.77115 6.7527 6.66504 6.69461L5.46582 6.03836C5.25179 5.92142 5.01771 6.15631 5.13477 6.37039L5.79688 7.58132C5.85418 7.68664 5.79611 7.81801 5.67969 7.84695L1.98242 8.76589C1.74146 8.83086 1.74152 9.1726 1.98242 9.23757L5.66309 10.1516C5.77932 10.1805 5.83724 10.311 5.78027 10.4163L5.13086 11.6106C5.01485 11.8246 5.24925 12.0584 5.46289 11.9417L6.66016 11.2854C6.76621 11.2273 6.89876 11.286 6.92676 11.4036L7.84961 15.2796C7.9147 15.5203 8.25625 15.5204 8.32129 15.2796L9.23926 11.4182C9.26713 11.301 9.39891 11.2419 9.50488 11.2991L10.6963 11.9446C10.9107 12.0607 11.1449 11.8252 11.0273 11.6116L10.3721 10.4221C10.3143 10.3169 10.3719 10.1857 10.4883 10.1565L14.1875 9.23757C14.4285 9.17268 14.4285 8.83087 14.1875 8.76589L10.4941 7.84793C10.3781 7.81908 10.3204 7.68854 10.377 7.58328L11.0312 6.37234C11.1472 6.15758 10.9107 5.92388 10.6973 6.04226L9.50781 6.70242C9.40167 6.76128 9.26824 6.70236 9.24023 6.58425L8.32129 2.70632Z" fill="currentColor"/></svg>
-                  Install Herond
-                </a>
-              </div>
+          <div>
+            <!-- Section Heading -->
+            <div class="mb-4 flex items-center gap-4">
+              <span class="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80">How it works</span>
+              <span class="h-px flex-1 bg-white/10"></span>
             </div>
+            <h2 class="mb-10 text-[clamp(26px,3.2vw,34px)] font-semibold tracking-[-0.02em]">Three steps to your first ticket</h2>
 
-            <!-- Tab Body Text -->
-            <p id="step-body-paragraph" class="flex min-h-[130px] items-center justify-center text-pretty px-6 py-4 text-center text-[13.5px] leading-relaxed text-muted-foreground">
-              Get Herond Browser on iOS, Android, or desktop. Under a minute.
-            </p>
-
-            <!-- Step Tabs footer -->
-            <div class="grid grid-cols-1 border-t border-white/[0.06] sm:grid-cols-3">
+            <!-- Desktop: vertical step list doubles as the section's left rail. -->
+            <div id="desktop-step-rail" class="mt-6 hidden lg:block lg:space-y-1.5">
               <button
                 type="button"
                 data-step-idx="0"
-                class="step-tab-btn flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5 text-left transition-colors last:border-b-0 sm:border-b-0 sm:not-last:border-r sm:border-white/[0.06] bg-[var(--card-hover)]"
+                class="rail-step-btn flex w-full items-start gap-3 rounded-xl px-3.5 py-3 text-left transition-colors bg-card"
               >
-                <span class="step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-gradient-to-b from-[var(--hp-cta-from)] to-[var(--hp-cta-to)] text-white">1</span>
-                <span class="step-title-text text-[13.5px] font-bold text-foreground">Install</span>
+                <span class="rail-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-gradient-to-b from-[var(--hp-cta-from)] to-[var(--hp-cta-to)] text-white">1</span>
+                <div>
+                  <div class="rail-title-text text-[14px] font-bold text-foreground">Install</div>
+                  <p class="rail-body-text mt-1 text-pretty text-[13px] leading-relaxed text-muted-foreground">Get Herond Browser on iOS, Android, or desktop. Under a minute.</p>
+                  <a href="https://points.herond.org/?utm_source=website&utm_medium=campaign1" target="_blank" class="rail-cta-link mt-3 inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3 text-[14px] font-semibold text-white no-underline shadow-[0_8px_24px_-6px_rgba(51,115,246,0.55)] transition-all hover:scale-[1.015] active:scale-[0.985] hover:bg-[#4680ff] hover:shadow-[0_10px_30px_-6px_rgba(51,115,246,0.7)]">
+                    <svg viewBox="0 0 17 18" fill="none" class="size-4"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.07227 0.272731C7.70399 -0.0908033 8.48151 -0.0906919 9.11328 0.272731L15.1602 3.75222C15.7946 4.11731 16.1864 4.79372 16.1865 5.52566V12.4739C16.1865 13.206 15.7947 13.8822 15.1602 14.2473L9.11328 17.7268C8.48149 18.0904 7.70404 18.0904 7.07227 17.7268L1.02539 14.2473C0.391012 13.8822 0 13.2059 0 12.4739V5.52566C0.000100522 4.79373 0.390997 4.11731 1.02539 3.75222L7.07227 0.272731ZM8.32129 2.70632C8.2564 2.46532 7.91463 2.46544 7.84961 2.70632L6.93164 6.57644C6.90374 6.69415 6.77115 6.7527 6.66504 6.69461L5.46582 6.03836C5.25179 5.92142 5.01771 6.15631 5.13477 6.37039L5.79688 7.58132C5.85418 7.68664 5.79611 7.81801 5.67969 7.84695L1.98242 8.76589C1.74146 8.83086 1.74152 9.1726 1.98242 9.23757L5.66309 10.1516C5.77932 10.1805 5.83724 10.311 5.78027 10.4163L5.13086 11.6106C5.01485 11.8246 5.24925 12.0584 5.46289 11.9417L6.66016 11.2854C6.76621 11.2273 6.89876 11.286 6.92676 11.4036L7.84961 15.2796C7.9147 15.5203 8.25625 15.5204 8.32129 15.2796L9.23926 11.4182C9.26713 11.301 9.39891 11.2419 9.50488 11.2991L10.6963 11.9446C10.9107 12.0607 11.1449 11.8252 11.0273 11.6116L10.3721 10.4221C10.3143 10.3169 10.3719 10.1857 10.4883 10.1565L14.1875 9.23757C14.4285 9.17268 14.4285 8.83087 14.1875 8.76589L10.4941 7.84793C10.3781 7.81908 10.3204 7.68854 10.377 7.58328L11.0312 6.37234C11.1472 6.15758 10.9107 5.92388 10.6973 6.04226L9.50781 6.70242C9.40167 6.76128 9.26824 6.70236 9.24023 6.58425L8.32129 2.70632Z" fill="currentColor"/></svg>
+                    Install Herond
+                  </a>
+                </div>
               </button>
               <button
                 type="button"
                 data-step-idx="1"
-                class="step-tab-btn flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5 text-left transition-colors last:border-b-0 sm:border-b-0 sm:not-last:border-r sm:border-white/[0.06]"
+                class="rail-step-btn flex w-full items-start gap-3 rounded-xl px-3.5 py-3 text-left transition-colors hover:bg-white/[0.02]"
               >
-                <span class="step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40">2</span>
-                <span class="step-title-text text-[13.5px] font-bold text-muted-foreground">Check in daily</span>
+                <span class="rail-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40">2</span>
+                <div>
+                  <div class="rail-title-text text-[14px] font-bold text-muted-foreground">Check in daily</div>
+                  <p class="rail-body-text mt-1 hidden text-pretty text-[13px] leading-relaxed text-muted-foreground">Log in to Herond Point and check in every day to collect your tickets.</p>
+                </div>
               </button>
               <button
                 type="button"
                 data-step-idx="2"
-                class="step-tab-btn flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5 text-left transition-colors last:border-b-0 sm:border-b-0 sm:not-last:border-r sm:border-white/[0.06]"
+                class="rail-step-btn flex w-full items-start gap-3 rounded-xl px-3.5 py-3 text-left transition-colors hover:bg-white/[0.02]"
               >
-                <span class="step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40">3</span>
-                <span class="step-title-text text-[13.5px] font-bold text-muted-foreground">Stay active, win more</span>
+                <span class="rail-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40">3</span>
+                <div>
+                  <div class="rail-title-text text-[14px] font-bold text-muted-foreground">Stay active, win more</div>
+                  <p class="rail-body-text mt-1 hidden text-pretty text-[13px] leading-relaxed text-muted-foreground">Check in 5 of 7 days for a bonus ticket. Every ticket automatically enters each Sunday's Weekly Draw and the Grand Draw at season's end.</p>
+                </div>
               </button>
             </div>
-
           </div>
+
+          <!-- Interactive tabs box -->
+          <div class="mt-8 rounded-2xl p-px shadow-[0_24px_60px_-30px_rgba(37,99,235,0.45)] lg:mt-0" style="background: linear-gradient(150deg, rgba(51,115,246,0.55), rgba(102,81,234,0.4) 45%, rgba(255,128,151,0.35) 100%);">
+            <div class="overflow-hidden rounded-[17px] bg-card">
+
+              <!-- Mobile/tablet: image up top for thumb reach, then the body copy
+                   (fixed height so switching steps never shifts the layout), then
+                   tabs pinned to the bottom (the desktop rail replaces all of this
+                   at lg+). -->
+              <div class="px-5 pb-5 pt-5">
+                <div class="relative aspect-[1200/1142] w-full overflow-hidden rounded-xl flex items-center justify-center lg:mx-auto lg:max-w-[420px]">
+                  <img
+                    id="step-showcase-image"
+                    src="public/assets/how-it-works/step-1.webp"
+                    alt="Install"
+                    class="max-h-full max-w-full object-contain"
+                  >
+                </div>
+
+                <div id="step-cta-wrap" class="mt-5 flex justify-center lg:hidden">
+                  <a href="https://points.herond.org/?utm_source=website&utm_medium=campaign1" target="_blank" class="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3 text-[14px] font-semibold text-white no-underline shadow-[0_8px_24px_-6px_rgba(51,115,246,0.55)] transition-all hover:scale-[1.015] active:scale-[0.985] hover:bg-[#4680ff] hover:shadow-[0_10px_30px_-6px_rgba(51,115,246,0.7)]">
+                    <svg viewBox="0 0 17 18" fill="none" class="size-4"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.07227 0.272731C7.70399 -0.0908033 8.48151 -0.0906919 9.11328 0.272731L15.1602 3.75222C15.7946 4.11731 16.1864 4.79372 16.1865 5.52566V12.4739C16.1865 13.206 15.7947 13.8822 15.1602 14.2473L9.11328 17.7268C8.48149 18.0904 7.70404 18.0904 7.07227 17.7268L1.02539 14.2473C0.391012 13.8822 0 13.2059 0 12.4739V5.52566C0.000100522 4.79373 0.390997 4.11731 1.02539 3.75222L7.07227 0.272731ZM8.32129 2.70632C8.2564 2.46532 7.91463 2.46544 7.84961 2.70632L6.93164 6.57644C6.90374 6.69415 6.77115 6.7527 6.66504 6.69461L5.46582 6.03836C5.25179 5.92142 5.01771 6.15631 5.13477 6.37039L5.79688 7.58132C5.85418 7.68664 5.79611 7.81801 5.67969 7.84695L1.98242 8.76589C1.74146 8.83086 1.74152 9.1726 1.98242 9.23757L5.66309 10.1516C5.77932 10.1805 5.83724 10.311 5.78027 10.4163L5.13086 11.6106C5.01485 11.8246 5.24925 12.0584 5.46289 11.9417L6.66016 11.2854C6.76621 11.2273 6.89876 11.286 6.92676 11.4036L7.84961 15.2796C7.9147 15.5203 8.25625 15.5204 8.32129 15.2796L9.23926 11.4182C9.26713 11.301 9.39891 11.2419 9.50488 11.2991L10.6963 11.9446C10.9107 12.0607 11.1449 11.8252 11.0273 11.6116L10.3721 10.4221C10.3143 10.3169 10.3719 10.1857 10.4883 10.1565L14.1875 9.23757C14.4285 9.17268 14.4285 8.83087 14.1875 8.76589L10.4941 7.84793C10.3781 7.81908 10.3204 7.68854 10.377 7.58328L11.0312 6.37234C11.1472 6.15758 10.9107 5.92388 10.6973 6.04226L9.50781 6.70242C9.40167 6.76128 9.26824 6.70236 9.24023 6.58425L8.32129 2.70632Z" fill="currentColor"/></svg>
+                    Install Herond
+                  </a>
+                </div>
+              </div>
+
+              <!-- Tab Body Text -->
+              <p id="step-body-paragraph" class="flex min-h-[130px] items-center justify-center text-pretty px-6 py-4 text-center text-[13.5px] leading-relaxed text-muted-foreground lg:hidden">
+                Get Herond Browser on iOS, Android, or desktop. Under a minute.
+              </p>
+
+              <!-- Step Tabs footer -->
+              <div class="grid grid-cols-1 border-t border-white/[0.06] sm:grid-cols-3 lg:hidden">
+                <button
+                  type="button"
+                  data-step-idx="0"
+                  class="step-tab-btn flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5 text-left transition-colors last:border-b-0 sm:border-b-0 sm:not-last:border-r sm:border-white/[0.06] bg-[var(--card-hover)]"
+                >
+                  <span class="step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-gradient-to-b from-[var(--hp-cta-from)] to-[var(--hp-cta-to)] text-white">1</span>
+                  <span class="step-title-text text-[13.5px] font-bold text-foreground">Install</span>
+                </button>
+                <button
+                  type="button"
+                  data-step-idx="1"
+                  class="step-tab-btn flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5 text-left transition-colors last:border-b-0 sm:border-b-0 sm:not-last:border-r sm:border-white/[0.06]"
+                >
+                  <span class="step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40">2</span>
+                  <span class="step-title-text text-[13.5px] font-bold text-muted-foreground">Check in daily</span>
+                </button>
+                <button
+                  type="button"
+                  data-step-idx="2"
+                  class="step-tab-btn flex items-center gap-2.5 border-b border-white/[0.06] px-4 py-3.5 text-left transition-colors last:border-b-0 sm:border-b-0 sm:not-last:border-r sm:border-white/[0.06]"
+                >
+                  <span class="step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40">3</span>
+                  <span class="step-title-text text-[13.5px] font-bold text-muted-foreground">Stay active, win more</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -896,36 +944,64 @@
      * Interactive Components: How It Works switcher
      * =======================================================================*/
     const stepTabs = document.querySelectorAll(".step-tab-btn");
+    const railBtns = document.querySelectorAll(".rail-step-btn");
     const stepBody = document.getElementById("step-body-paragraph");
     const stepImage = document.getElementById("step-showcase-image");
     const stepCtaWrap = document.getElementById("step-cta-wrap");
 
-    stepTabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        const idx = parseInt(tab.getAttribute("data-step-idx"), 10);
-        const data = STEPS[idx];
+    function setActiveStep(idx) {
+      const data = STEPS[idx];
 
-        // Update active classes on buttons
-        stepTabs.forEach((btn, bidx) => {
-          const badge = btn.querySelector(".step-num-badge");
-          const title = btn.querySelector(".step-title-text");
-          if (bidx === idx) {
-            btn.classList.add("bg-[var(--card-hover)]");
-            badge.className = "step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-gradient-to-b from-[var(--hp-cta-from)] to-[var(--hp-cta-to)] text-white";
-            title.className = "step-title-text text-[13.5px] font-bold text-foreground";
-          } else {
-            btn.classList.remove("bg-[var(--card-hover)]");
-            badge.className = "step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40";
-            title.className = "step-title-text text-[13.5px] font-bold text-muted-foreground";
-          }
-        });
-
-        // Update content
-        stepBody.textContent = data.body;
-        stepImage.src = data.image;
-        stepImage.alt = data.title;
-        stepCtaWrap.classList.toggle("invisible", idx !== 0);
+      // Mobile/tablet tab bar
+      stepTabs.forEach((btn, bidx) => {
+        const badge = btn.querySelector(".step-num-badge");
+        const title = btn.querySelector(".step-title-text");
+        if (bidx === idx) {
+          btn.classList.add("bg-[var(--card-hover)]");
+          badge.className = "step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-gradient-to-b from-[var(--hp-cta-from)] to-[var(--hp-cta-to)] text-white";
+          title.className = "step-title-text text-[13.5px] font-bold text-foreground";
+        } else {
+          btn.classList.remove("bg-[var(--card-hover)]");
+          badge.className = "step-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40";
+          title.className = "step-title-text text-[13.5px] font-bold text-muted-foreground";
+        }
       });
+
+      // Desktop rail
+      railBtns.forEach((btn, bidx) => {
+        const badge = btn.querySelector(".rail-num-badge");
+        const title = btn.querySelector(".rail-title-text");
+        const body = btn.querySelector(".rail-body-text");
+        const cta = btn.querySelector(".rail-cta-link");
+        if (bidx === idx) {
+          btn.classList.add("bg-card");
+          btn.classList.remove("hover:bg-white/[0.02]");
+          badge.className = "rail-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-gradient-to-b from-[var(--hp-cta-from)] to-[var(--hp-cta-to)] text-white";
+          title.className = "rail-title-text text-[14px] font-bold text-foreground";
+          body.textContent = STEPS[bidx].body;
+          body.classList.remove("hidden");
+          if (cta) cta.classList.toggle("hidden", bidx !== 0);
+        } else {
+          btn.classList.remove("bg-card");
+          btn.classList.add("hover:bg-white/[0.02]");
+          badge.className = "rail-num-badge flex h-7 w-7 flex-none items-center justify-center rounded-full text-[13px] font-extrabold bg-[#2d2d2e] text-white/40";
+          title.className = "rail-title-text text-[14px] font-bold text-muted-foreground";
+          body.classList.add("hidden");
+        }
+      });
+
+      // Shared content (image + mobile body copy + mobile CTA)
+      stepBody.textContent = data.body;
+      stepImage.src = data.image;
+      stepImage.alt = data.title;
+      stepCtaWrap.classList.toggle("invisible", idx !== 0);
+    }
+
+    stepTabs.forEach(tab => {
+      tab.addEventListener("click", () => setActiveStep(parseInt(tab.getAttribute("data-step-idx"), 10)));
+    });
+    railBtns.forEach(btn => {
+      btn.addEventListener("click", () => setActiveStep(parseInt(btn.getAttribute("data-step-idx"), 10)));
     });
 
     /* =========================================================================
