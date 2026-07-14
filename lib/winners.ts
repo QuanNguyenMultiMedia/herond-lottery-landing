@@ -50,7 +50,7 @@ function fetchGvizViaJsonp(sheetId: string): Promise<GvizResponse> {
       resolve(json);
     };
 
-    script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json;responseHandler=${callbackName}`;
+    script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json;responseHandler:${callbackName}`;
     script.onerror = () => {
       cleanup();
       reject(new Error("gviz script failed to load"));
