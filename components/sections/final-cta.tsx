@@ -51,8 +51,9 @@ export function FinalCta() {
           the notch bites are genuine cutouts (whatever's behind shows through),
           not a solid patch painted to guess-match the background. */}
       <div className="relative mx-auto w-full max-w-[540px] px-6">
-        <div
-          className="relative overflow-hidden rounded-t-[28px] border border-b-0 border-border bg-card shadow-[0_-20px_50px_-36px_rgba(0,0,0,0.6)]"
+        <GradientText
+          as="div"
+          className="block w-full rounded-t-[28px] border border-b-0 border-border bg-card shadow-[0_-20px_50px_-36px_rgba(0,0,0,0.6)]"
           style={{
             maskImage:
               "radial-gradient(circle 14px at 0 100%, transparent 14px, black 15px), radial-gradient(circle 14px at 100% 100%, transparent 14px, black 15px)",
@@ -62,21 +63,18 @@ export function FinalCta() {
             WebkitMaskComposite: "source-in",
           }}
         >
-          <div className="px-8 pb-9 pt-11 sm:px-12">
-            <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80">
+          <div className="relative z-10 px-8 pb-9 pt-11 sm:px-12">
+            <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
               Season 1 Grand Draw
             </div>
-            <GradientText
-              as="div"
-              className="fc-amount mb-1.5 rounded-2xl bg-card text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_0_30px_rgba(51,115,246,0.35)]"
-            >
+            <div className="fc-amount mb-1.5 text-[clamp(46px,8.5vw,76px)] font-bold leading-none tracking-[-0.03em] tabular-nums text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
               $10,000
-            </GradientText>
-            <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-muted-foreground">
+            </div>
+            <div className="text-[12.5px] font-semibold uppercase tracking-[.12em] text-white/75 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
               Total prize pool
             </div>
           </div>
-        </div>
+        </GradientText>
 
         <div className="relative h-6">
           <div className="absolute inset-x-6 top-1/2 border-t border-dashed border-[var(--hp-hairline)]" />
